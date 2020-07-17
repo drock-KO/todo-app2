@@ -3,10 +3,10 @@
     
 	<%= form_with model: [@project, @task], local: true, id: "new-task" do |f| %>
 	  <%#= f.hidden_field :project_id, :value => @project.id %>
-	  <%= f.text_field :task, placeholder: "タスク名" %><br>
-	  <%= f.text_area :text, placeholder: "タスクの詳細", rows: "2", class: "taskbox" %><br>
-		<%#= f.date_field :deadline, class: "datebox" %><br>
-		<%#= f.time_field :deadline_time, class: "timebox" %><br>
+	  <%= f.text_field :task, placeholder: "タスク名", class: "taskbox" %><br>
+	  <%= f.text_area :text, placeholder: "タスクの詳細", rows: "2", class: "textbox" %><br>
+		<%= f.datetime_field :deadline, class: "datebox" %><br>
+		<%= f.time_field :deadline_time, class: "timebox" %><br>
 	  <%= f.submit "POST", class: "form-submit" %>
 	<% end %>
 </div>

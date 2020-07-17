@@ -9,9 +9,12 @@ class TasksController < ApplicationController
   def create
     #binding.pry
     project_id = Project.find(params[:project_id])
-    task = Task.create(task_params)
-    redirect_to root_path
-    # redirect_to project_path(project_id) if task.present?
+    @task = Task.create(task_params)
+    # redirect_to root_path
+    respond_to do |f|
+      f.html { redirect_to root_path}
+      f.json
+    end
   end
 
   def edit

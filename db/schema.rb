@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_13_103305) do
+ActiveRecord::Schema.define(version: 2020_07_17_095658) do
 
   create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "project", null: false
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2020_07_13_103305) do
     t.bigint "project_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "deadline"
+    t.time "deadline_time"
     t.index ["project_id"], name: "index_tasks_on_project_id"
     t.index ["task"], name: "index_tasks_on_task"
   end

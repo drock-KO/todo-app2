@@ -14,16 +14,25 @@
  *= require_self
  */
 
-.container {
-  background-image: url("<%= asset_path('fujii.png') %>");
-  height: 100%;
-  background-size:cover;
-}
-
 body {
   
   white-space:nowrap;
   overflow:scroll; 
+}
+
+h1 {
+  display: block;
+}
+
+.container {
+  background-image: url("<%= asset_path('fujii.png') %>");
+  height: 100%;
+  background-size:cover;
+  display: block;
+}
+
+.contents {
+  display: flex;
 }
 
 .contents-projects {
@@ -40,7 +49,8 @@ body {
   border: medium solid #ff00ff;
   /*white-space:nowrap;*/
   overflow:scroll;
-  overflow-y: hidden;
+  overflow-x: hidden;
+  display: block;
 }
 
 .contents-tasks {
@@ -70,4 +80,8 @@ body {
 .menu-contents {
     position: absolute;/*←絶対位置*/
     top: 0; /*下に固定*/
+}
+
+.task-link {
+  
 }

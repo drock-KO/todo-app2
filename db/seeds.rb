@@ -10,4 +10,5 @@
 @task.task         = 'task1'
 @task.text        = 'todo'
 @task.project_id   = '1'
+@task.deadline = Date.new(2017, 01, 01)
 @task.save

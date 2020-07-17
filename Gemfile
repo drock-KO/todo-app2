@@ -66,10 +66,10 @@ gem 'devise'
 gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-material-design', '0.1.4'
-gem 'jquery-rails'
 gem "font-awesome-rails"
 gem 'mini_magick'
 gem 'kaminari'
 gem "guard-shell"
 gem "toastr-rails"
 gem 'rails-i18n'
+gem 'jquery-rails'
