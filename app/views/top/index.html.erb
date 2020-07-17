@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Top#index</h1>
+    <% @projects.each do |project| %>
+      <div class="contents-wrap">
+        <%= link_to "#{project.project}", project_path(project), class: 'project-title' %>
+        
+        <div class="contents-tasks">
+          <% project.tasks.each do |task| %>
+            <%= link_to "#{task.task}", project_task_path(task.project, task), class: 'task-title' %>
+          <% end %>    
+        </div>
+        
+        <%= link_to "タスクを追加する", new_project_task_path(project.id), class: 'new-task' %>
+      </div>
+    <% end %>
+</div>

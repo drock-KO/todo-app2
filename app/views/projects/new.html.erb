@@ -1,0 +1,19 @@
+<h1>Project#new</h1>
+<div class="project-new">
+  <%= form_for @project do |f| %>
+  <h2>プロジェクトを登録</h2>
+    
+    <% if response.redirect? %>
+      <script type="text/javascript">
+        toastr.warning("登録に失敗しました。")
+      </script>
+    <% end %>
+    
+    <div class="form-group">
+      <%= f.text_field :project, placeholder: "プロジェクト名", class: "project-form" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "プロジェクトを作成", class: "project-submit" %>
+    </div>
+  <% end %>  
+</div>

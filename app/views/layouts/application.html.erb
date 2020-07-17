@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TodoApp2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    
+    <header class="menu-contents">
+      <%= link_to 'new project', new_project_path, class: 'new-project' %>
+      <%= link_to "プロジェクト一覧へ戻る", root_path, class: 'root-path' %>
+    </header>
+    <%= yield %>
+    <%#= render partial: 'common/root_path', class: 'root-path' %>
+  </body>
+</html>
