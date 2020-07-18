@@ -7,7 +7,7 @@
 	  <%= f.text_area :text, placeholder: "タスクの詳細", rows: "2", class: "taskbox" %><br>
 		<%= f.date_field :deadline, class: "datebox" %><br>
 		<%= f.time_field :deadline_time, class: "timebox" %><br>
-	  <%= f.submit "POST", class: "form-submit" %>
+	  <%= f.submit "UPDATE", class: "form-submit" %>
 	<% end %>
 </div>
 <%= render partial: 'common/project_path', locals: { project: @project } %>

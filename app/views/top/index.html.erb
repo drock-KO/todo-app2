@@ -1,37 +1,46 @@
 <div class="container">
   <h1>プロジェクト一覧</h1>
-  <div class="contents">
+  <div class="projects">
     <% @projects.each do |project| %>
-      <div class="contents-wrap">
-        <%= link_to "#{project.project}", project_path(project), class: 'project-title' %>
+      <div class="project-wrap">
+        <h3 class="project-title"><%= project.project %></h3>
         
-        <div class="contents-tasks">
+        <div class="project-tasks">
           <% project.tasks.each do |task| %>
-            <div class="task-link">
-              <%= link_to "#{task.task}", project_task_path(task.project, task), class: 'task-title' %>
-              <span><%= task.date %></span>
-              <span><%= task.time %></span>
-            </div>
-            <div class="task-menu">
-              <%= link_to "編集", edit_project_task_path(task.project, task) %>
-              <%= link_to "削除", project_task_path(task.project, task), method: :delete %>              
+            <div class="task-wrap text-color">
+              <div class="task-link text-color">
+                <%= link_to "#{task.task}", project_task_path(task.project, task), class: 'task-title' %>
+                <% if task.deadline.present? %>
+                  <span><%= task.deadline.strftime("%m月%d日") %></span>
+                <% end %>
+                <% if task.deadline_time.present? %>
+                  <span><%= task.deadline_time.strftime("%H:%M") %></span>
+                <% end %>
+              </div>
+              
+              <div class="task-menu text-color">
+                <%= link_to "編集", edit_project_task_path(task.project, task), class: "button edit-button" %>
+                <%= link_to "削除", project_task_path(task.project, task), method: :delete, class: "button destroy-button" %>              
+              </div>
             </div>
           <% end %>    
         </div>
         
+        <div class="appear-window", id="appear-window">
+          <button class="appear-button">＋タスクを追加する</button>
+        </div>
         <%#= link_to "タスクを追加する", new_project_task_path(project.id), class: 'new-task' %>
-<h1>Tasks#new</h1>
-<div class="task-form">
-    
-	<%= form_with model: [project, @task], local: true, id: "new-task" do |f| %>
-	  <%#= f.hidden_field :project_id, :value => @project.id %>
-	  <%= f.text_field :task, placeholder: "タスク名", class: "taskbox" %><br>
-	  <%= f.text_area :text, placeholder: "タスクの詳細", rows: "2", class: "textbox" %><br>
-		<%= f.datetime_field :deadline, class: "datebox" %><br>
-		<%= f.time_field :deadline_time, class: "timebox" %><br>
-	  <%= f.submit "POST", class: "form-submit" %>
-	<% end %>
-</div>
+        <div class="task-form", id="task-form">
+        	<%= form_with model: [project, @task], local: true, id: "new-task", class: "new-task-form" do |f| %>
+        	  <%#= f.hidden_field :project_id, :value => @project.id %>
+        	  <%= f.text_field :task, placeholder: "タスク名", class: "box taskbox" %><br>
+        	  <%= f.text_area :text, placeholder: "タスクの詳細", rows: "2", class: "box textbox" %><br>
+        		<%= f.date_field :deadline, class: "box datebox" %><br>
+        		<%= f.time_field :deadline_time, class: "box timebox" %><br>
+        	  <%= f.submit "タスクを追加", class: "form-submit" %>
+        	  <span class="hide-window">❎</span>
+        	<% end %>
+        </div>
 <%#= render partial: 'common/project_path', locals: { project: @project } %>
       </div>
       

@@ -60,3 +60,22 @@ $(function(){
     })
   })
 })
+
+$(function(){
+  $('.task-form').hide();
+  
+  $('.hide-window').on('click', () => {
+    $('.task-form').hide('fast');
+  });
+  
+  $("#appear-window").on('click', () => {
+    $("#task-form").show('fast');
+  });
+});
+
+// $(function() {
+//   $('.appear-button').on('click', () => {
+//     $('.task-form').show('.task-form');
+//   });
+// });
+

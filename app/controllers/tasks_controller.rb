@@ -8,13 +8,14 @@ class TasksController < ApplicationController
 
   def create
     #binding.pry
-    project_id = Project.find(params[:project_id])
+    # project_id = Project.find(params[:project_id])
     @task = Task.create(task_params)
     # redirect_to root_path
     respond_to do |f|
       f.html { redirect_to root_path}
       f.json
     end
+    
   end
 
   def edit
@@ -26,7 +27,7 @@ class TasksController < ApplicationController
     # binding.pry
     task = Task.find(params[:id])
     task.update(task_params)
-    redirect_to project_path(task.project_id)
+    redirect_to root_path
   end
 
   def destroy
