@@ -4,18 +4,38 @@
     <title>TodoApp2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= include_gon %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application' %>
+    
   </head>
 
   <body>
-    
-    <header class="menu-contents">
-      <%= link_to 'new project', new_project_path, class: 'new-project' %>
-      <%= link_to "プロジェクト一覧へ戻る", root_path, class: 'root-path' %>
+    <header class="header">
+      <nav class="nav">
+        <ul class="header_menu">
+          <li class="nav-link"></li>
+          <li class="header_menu_title"><h3 class="nav-link">ToDo-App</h3></li>
+          <li>
+            <ul class="header_menu_inner">
+              <%# リストを作成するリンクは今後開発していくので、今は"#"にしておきます。 %>
+              <li><button class="nav-link listNew" id="modal-menu-open"><i class="fa fa-plus"></i></button></li>
+              
+              <div class="modal-menu-overlay">
+                <div class="modal-menu">
+                  <button class="modal-menu add-project">＋プロジェクトを追加</button>
+                  <button class="modal-menu add-task">＋タスクを追加</button>
+                </div>
+              </div>
+              
+              <li><%= link_to fa_icon("home"), root_path, class: "nav-link" %></li>
+              <li><%= render partial: 'common/test' %></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
     </header>
+    
     <%= yield %>
-    <%#= render partial: 'common/root_path', class: 'root-path' %>
   </body>
 </html>

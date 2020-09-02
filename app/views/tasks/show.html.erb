@@ -1,6 +1,2 @@
 <h1>Tasks#show</h1>
 <%= @task.text %>
-<%= link_to "編集", edit_project_task_path(@task.project, @task) %>
-<%= link_to "削除", project_task_path(@task.project, @task), method: :delete %>
-<% task = @task.project.id %>
-<%= render partial: 'common/project_path', locals: { project: task } %>

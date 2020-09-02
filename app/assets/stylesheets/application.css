@@ -10,8 +10,10 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require jquery-ui/datepicker
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 
 * {
@@ -37,10 +39,18 @@ textarea {
 }
 
 body {
+  margin: 0;
   height: 100%;
-  max-height: 1000px;
+  width: 100%;
+  /*max-height: 1000px;*/
   white-space:nowrap;
-  overflow:scroll; 
+  overflow: scroll;
+  overscroll-behavior: none;
+  background-image: url("/images/haikei.png");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  
 }
 
 h1 {
@@ -59,19 +69,54 @@ iunput {
   width: 100%;
 }
 
+.modal-menu {
+  display:none;
+  width:50%;
+	margin:1.5em auto 0;
+	padding:10px 20px;
+	border:2px solid #aaa;
+	background:#fff;
+	z-index:5;
+}
+
+.modal-menu-overlay {
+	z-index:1;
+	display:none;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:120%;
+	background-color: rgba(0,0,0,0.75);
+	width:100%;
+	height:120%;
+	position:fixed;
+	top:0;
+	left:0;
+}
+
 .container {
-  background-size:cover;
   display: block;
+  padding-top: 10%;
 }
 
 .projects {
   display: flex;
-  max-height: 80%;
+  max-height: 100%;
 }
 
 .project-wrap {
   height: 100%;
-  max-height: 630px;
+  max-height: 550px;
+  overflow-y: scroll;
+  margin: 15px;
+  min-width: 300px;
+  z-index: 0;
+  display: block;
+  background-color: #ebecf1;
+  border-radius: 3px;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .contents-projects {
@@ -82,41 +127,82 @@ iunput {
 }
 
 .project-tasks {
-  height: 400px;
-  max-height: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  width: 100%;
+  max-height: 100%;
+  margin-bottom: 20px;
+  z-index: -1;
 }
 
-.project-wrap {
-  overflow: scroll;
-  margin: 15px;
-  height: 40%;
-  min-width: 300px;
-  /*border: medium solid #ff00ff;*/
-  /*white-space:nowrap;*/
-  overflow:scroll;
-  overflow-x: hidden;
-  display: block;
-  background-color: #ebecf1;
-  border-radius: 3px;
-  box-sizing: border-box;
-  max-height: 100%;
+.title-archive {
+  width: 100%;
+  display:-webkit-flex;
+  -webkit-justify-content: space-between;
+  /*display:flex;*/
+  justify-content: space-between;
+  position: relative;
+  
 }
 
 .project-title {
   flex: 0 0 auto;
   padding: 0 15px 15px 15px;
-  position: relative;
-  height: 10px;
+  z-index: 0;
+  width: 70%;
+  line-height: -0.5px;
+  overflow-x: scroll;
+  height: auto;
 }
 
-.project-tasks {
-  height: 100%;
-  width: 100%;
-  margin-bottom: 20px;
+.archive-icon{
+  z-index: 1;
+  margin-right: 6%;
+  margin-top: 18px;
+  font-size: 1.2rem;
+}
+
+.archive-icon:hover .archive-message {
+  display: inline;
+}
+
+.archive-message {
+  
+  position   :absolute;
+  display: none;
+  padding: 2px;
+  color: black;
+  box-shadow: 0 1px 0 rgba(9,30,66,.25);
+  background-color:white;
+  width:150px;
+  top: 50px;
+  left: 140px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.destroy-button:hover  .delete-todo-message {
+  display: inline;
+}
+
+.delete-todo-message{
+  position   :absolute;
+  display: none;
+  padding: 2px;
+  color: black;
+  box-shadow: 0 1px 0 rgba(9,30,66,.25);
+  background-color:white;
+  width:115px;
+  top: 75px;
+  left: 160px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.project-title　+ .project-tasks {
+  overflow: scroll;
+  overflow-x: hidden;  
 }
 
 .task-wrap {
@@ -142,6 +228,8 @@ iunput {
 .task-title {
   display: block;
 }
+
+
 
 .new-task {
   height: 20%;
@@ -181,8 +269,9 @@ iunput {
 
 .task-menu {
   padding-top: 5%;
-  margin-left: 65%;
+  margin-left: 75%;
   margin-bottom: 5%;
+  display: flex;
 }
 
 .task-title {
@@ -204,7 +293,6 @@ iunput {
 
 .new-task-form {
   width: inherit;
-    
 }
 
 input[type="text"] {
@@ -229,7 +317,7 @@ textarea {
   margin: 5px 0;
 }
 
-.hide-window {
+.hide-window .hide-project-form{
   font-size: 1.2rem
 }
 
@@ -237,6 +325,7 @@ textarea {
   text-align: center;
   padding-bottom: 5px;
   margin-bottom: 5px;
+  
 }
 
 .appear-button {
@@ -247,6 +336,42 @@ textarea {
 }
 
 .appear-button:hover {
-  background-color: rgb(220 220 220);
+  background-color: rgb(210 210 210);
   border-radius: 3px;
+}
+
+.add-project-button {
+  background-color: rgba(0,0,0,.08);
+  margin: 15px;
+  min-width: 300px;
+}
+
+.add-project-button:hover {
+  background-color: rgba(0,0,0,.15);
+  border-radius: 3px;
+}
+
+.new-project-form {
+  display: block;
+  max-height: 280px;
+}
+
+.project-form {
+  height: 20%;
+  width: inherit;
+  min-width: 300px;
+  max-height: 100%;
+  padding: 20px 10px;
+  margin: 15px;
+  background-color: #ebecf1;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  z-index: 0;
+  position: relative;
+  border-radius: 3px;
+}
+
+.new-project-form {
+  width: inherit;
 }

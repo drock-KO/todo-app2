@@ -63,7 +63,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'pry-rails'
 gem 'devise'
-gem 'therubyracer'
+gem 'mini_racer'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-material-design', '0.1.4'
 gem "font-awesome-rails"
@@ -73,3 +73,15 @@ gem "guard-shell"
 gem "toastr-rails"
 gem 'rails-i18n'
 gem 'jquery-rails'
+gem 'webpacker', github: 'rails/webpacker'
+gem 'rails-ujs'
+gem 'best_in_place', '~> 3.0.1'
+# moment.js
+gem 'momentjs-rails'
+
+# Tempus Dominus
+gem 'bootstrap4-datetime-picker-rails'
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-ui-rails'
+gem 'gon'
+gem 'data-confirm-modal'

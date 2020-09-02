@@ -1,3 +1,68 @@
-// Place all the styles related to the Top controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.notice,
+.alert {
+  display: none;
+}
+
+
+// header
+.header {
+  height: 5%;
+  width: 100%;
+  background: #026aa7;
+  opacity: 0.8;
+  padding: 20px;
+  position: fixed;
+  .nav {
+    .header_menu {
+      display: flex;
+      width: 100%;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      justify-content: space-between;
+      align-items: center;
+      text-decoration: none;
+      li {
+        list-style: none;
+        color: #fff;
+        a {
+          color: #fff;
+        }
+      }
+      &_title {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 25px;
+        font-weight: bold;
+        text-decoration: none;
+      }
+      &_inner {
+        padding-right: 35px;
+        align-items: center;
+        display: flex;
+        .listNew {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #fff;
+          height: 34px;
+          padding: 5px;
+        }
+        .nav-link {
+          padding: 5px;
+          background-color: #CCCCCC;
+          border-radius: 3px;
+          margin-left: 35px;
+          text-decoration: none;
+          font-size: 1.5rem;
+        .fa {
+          font-weight: 10;
+        }
+        }
+      }
+    }
+  }
+}
