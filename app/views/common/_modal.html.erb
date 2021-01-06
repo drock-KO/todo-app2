@@ -1,0 +1,16 @@
+                 <div id="overlay">
+                    <div class="modal-window" id="modal-<%= task.id %>">
+                      <div class="modal-message-box">
+                        <h3 id="modal-title-<%= task.id %>"><%= task.task %></h3>
+                        <p id="modal-text-<%= task.id %>"><%= task.text %></p>
+                        <% if task.deadline.present? %>
+                          <span id="modal-deadline-<%= task.id %>"><%= task.deadline.strftime("%m月%d日") %></span>
+                        <% end %>
+                        <% if task.deadline_time.present? %>
+                          <span id="modal-deadline-time-<%= task.id %>"><%= task.deadline_time.strftime("%H:%M") %></span>
+                        <% end %>
+                        
+                      </div>
+                      <span class="hide-modal-window">❎</span>
+                    </div>                  
+                  </div>

@@ -1,0 +1,11 @@
+<div class="edit-task-form", id="edit-task-form">
+	<%= form_with model: [task.project, task], local: true, class: "edit-task-form" do |f| %>
+	  <%#= f.hidden_field :project_id, :value => @project.id %>
+	  <%= f.text_field :task, placeholder: "タスク名", class: "box taskbox" %><br>
+	  <%= f.text_area :text, placeholder: "タスクの詳細", rows: "2", class: "box textbox" %><br>
+		<%= f.date_field :deadline, class: "box datebox" %><br>
+		<%= f.time_field :deadline_time, class: "box timebox" %><br>
+	  <%= f.submit "タスクを編集", class: "form-submit" %>
+	  <span class="edit-hide-window">❎</span>
+	<% end %>
+</div>

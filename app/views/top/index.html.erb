@@ -14,7 +14,7 @@
 
         <div class="project-tasks">
           <% project.tasks.each do |task| %>
-            <div class="task-wrap text-color" data-task-id="<%= task.id %>">
+            <div class="task-wrap text-color" data-task="<%= task.id %>">
               <% if task.task.present? %>
                 <div class="task-link text-color">
                  
@@ -32,13 +32,13 @@
                 <% end %>
               </div>
               
-              <div class="task-menu text-color" data-task="-<%= task.id %>">
-                <%#= link_to project_task_path(task.project, task), method: :delete, class: "button destroy-button", remote: true, data: { confirm: '削除してもよろしいですか？'} do %>              
+              <div class="task-menu text-color">
+                <%= link_to project_task_path(task.project, task), method: :delete, class: "button destroy-task-button", remote: true, data: { confirm: '削除してもよろしいですか？'}, data: {task_id: task.id} do %>              
                   <span  class="js-destroy-task-button">
                     <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
                     <span class="delete-todo-message">ToDoを削除します</span>
                   </span>              
-                <%# end %>
+                <% end %>
               </div>
             </div>
           <% end %>    
@@ -82,4 +82,5 @@
     
   </div>
 </div>
+
 

@@ -35,8 +35,12 @@ class TasksController < ApplicationController
     project = Project.find(params[:project_id])
     task = project.tasks.find(params[:id])
     task.destroy
-    redirect_to root_path
-    # redirect_to project_path(project)
+    if task.destroy
+      render json: {result: "ToDoを削除しました"}, status: :ok
+    else
+      render json: task.errors, status: :unprocessable_entity
+    end
+    #redirect_to root_path
   end
 
   def show
